@@ -40,10 +40,13 @@ AND year(dtPedido) = '2018'
 
 -- COMMAND ----------
 
-SELECT * 
-       DATEDIFF(dtEstimativaEntrega, dtAprovado) as 
+SELECT *,
+       DATEDIFF(dtEstimativaEntrega, dtAprovado) as teste
+       
 FROM silver_olist.pedido
 
 WHERE descSituacao IN ('shipped','canceled')
 AND year(dtPedido) = '2018' 
 AND DATEDIFF(dtEstimativaEntrega, dtAprovado) > 30
+
+-- leia-se: selecione todas as linhas da tabela silver_olist.pedido filtrando pedidos enviados ou cancelados de 2018 e cuja estimativa de entrega tenha sido maior que 30 dias depois da data de pedido aprovado. Incluindo uma coluna com o resultado da diferença entre a data de estimativa de entrega e a data de pedido aprovado.
